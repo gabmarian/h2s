@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table items="{containers}" id="containerTab">
+		<headerToolbar/>
+		<columns>
+			<Column>
+				<header>
+					<Text text="ID"/>
+				</header>
+				<footer/>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Material"/>
+				</header>
+				<footer/>
+			</Column>			
+			<Column>
+				<header>
+					<Text text="Container Type"/>
+				</header>
+				<footer/>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Temperature"/>
+				</header>
+				<footer/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{Id}"/>
+					<Text text="{Material}"/>
+					<Text text="{Type}"/>
+					<Text text="{Temperature}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

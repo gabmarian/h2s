@@ -1,0 +1,38 @@
+{
+	"transports": [{
+		"index": 0,
+		"DeliveryNumber": "1000000001",
+		"Customer": "Audi Hungaria Zrt",
+		"Destination": "Győr",
+		"Vehicle": "Volvo",
+		"NumOfContainers": 3,
+		"containers": [{
+			"Id": "A-0001",
+			"Type": "IBC-1",
+			"Material": "Diacylgliceron"
+		}, {
+			"Id": "A-0002",
+			"Type": "IBC-1",
+			"Material": "Monoacylglycerol"
+		}, {
+			"Id": "A-0003",
+			"Type": "IBC-2",
+			"Material": "Monoacylglycerol"
+		}]
+	}, {
+		"index": 1,
+		"DeliveryNumber": "1000000002",
+		"Destination": "Kecskemét",
+		"Customer": "Mercedes-Benz Hungária Kft.",
+		"NumOfContainers": 2,
+		"containers": [{
+			"Id": "B-0001",
+			"Type": "IBC-1",
+			"Material": "Diacylgliceron"
+		}, {
+			"Id": "B-0002",
+			"Type": "IBC-2",
+			"Material": "Diacylgliceron"
+		}]
+	}]
+}

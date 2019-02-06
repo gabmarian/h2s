@@ -1,0 +1,12 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="h2s.PolyTransManager.controller.TransportList" xmlns="sap.m">
+	<Page title="Transport List" showHeader="true" showFooter="false" showNavButton="false">
+		<content>
+			<List mode="SingleSelectMaster" items="{/transports}" selectionChange="onSelectionChange">
+				<items>
+					<ObjectListItem intro="{DeliveryNumber}" title="{Destination}" number="{NumOfContainers}" numberUnit="containers">  
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>
