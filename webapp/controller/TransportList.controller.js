@@ -10,6 +10,7 @@ sap.ui.define([
 		},
 
 		handleRouteMatched: function () {
+			// load first item on startup
 			this.getRouter().navTo("transport", {
 				index: 0
 			});

@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<f:SimpleForm title="Details">
+		<f:content>
+			<Label text="Delivery Number"/>
+			<Text text="{DeliveryNumber}"/>
+			<Label text="Customer"/>
+			<Text text="{Customer}"/>
+			<Label text="Vehicle type"/>
+			<Text text="{Vehicle}"/>
+			<Label text="Cargo Weight"/>
+			<Text text="{CargoWeight} KG"/>			
+		</f:content>
+	</f:SimpleForm>
+	<f:SimpleForm title="Contacts">
+		<f:content>
+			<Label text="Driver name"/>
+			<Text text="{DriverName}"/>
+			<Label text="Driver's Phone Number"/>
+			<Text text="{DriverPhone}"/>
+			<Label text="Sales Rep"/>
+			<Text text="{SalesRepName}"/>
+			<Label text="Sales Rep's Phone Number"/>
+			<Text text="{SalesRepPhone}"/>			
+		</f:content>
+	</f:SimpleForm>	
+</core:FragmentDefinition>
