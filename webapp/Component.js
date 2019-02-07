@@ -17,6 +17,10 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
+
+			//debugger;
+			sap.ui.getCore().loadLibrary("openui5.googlemaps", "./openui5/googlemaps/");
+
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 

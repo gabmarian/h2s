@@ -39,7 +39,6 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
 
@@ -88,24 +87,24 @@
 				"clearTarget": false
 			},
 			"routes": [{
-				"name": "transport",
-				"pattern": "transport/{index}",
-				"target": ["transportList", "transport"]
-			}, {
-				"name": "default",
-				"pattern": "",
-				"target": ["transportList", "transport"]
-			}			
-		
+					"name": "transport",
+					"pattern": "transport/{index}",
+					"target": ["transportList", "transport"]
+				}, {
+					"name": "default",
+					"pattern": "",
+					"target": ["transportList", "transport"]
+				}
+
 			],
 			"targets": {
-			    "transportList": {
-			    	"controlAggregation": "masterPages",
+				"transportList": {
+					"controlAggregation": "masterPages",
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewName": "TransportList"			    	
-			    },
+					"viewName": "TransportList"
+				},
 				"transport": {
 					"controlAggregation": "detailPages",
 					"viewType": "XML",

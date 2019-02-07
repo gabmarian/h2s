@@ -1,11 +1,15 @@
 /*global history */
 sap.ui.define([
+	"./Formatter",
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History"
-], function (Controller, History) {
+], function (Formatter, Controller, History) {
 	"use strict";
 
 	return Controller.extend("h2s.PolyTransManager.controller.BaseController", {
+		
+		formatter: Formatter,
+		
 		/**
 		 * Convenience method for accessing the router in every controller of the application.
 		 * @public
