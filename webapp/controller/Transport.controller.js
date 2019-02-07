@@ -35,7 +35,7 @@ sap.ui.define([
 		},
 
 		handleRouteMatched: function (oEvent) {
-
+			
 			var path = "/transports/" + oEvent.getParameter("arguments").index;
 
 			this.getView().bindElement(path);
@@ -58,10 +58,10 @@ sap.ui.define([
 					
 					// Get actual and previous temperature
 					var temperature = jsonModel.getProperty("/value/0/temperature");
-					var tempPrev = jsonModel.getProperty("/value/1/temperature");
+					var tempPrev = that.getModel().getProperty( transportPath + "/containers/" + idx + "/Temperature" );
 					
 					// Update temperature
-					that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/Temperature", temperature);
+					that.getModel().setProperty(transportPath + "/containers/" + idx + "/Temperature", temperature);
 					
 					// If temperature changed mark the line with appropriate icon
 					var tempChanged = false;
@@ -86,6 +86,17 @@ sap.ui.define([
 			this.getModel().getProperty("/transports").forEach(function (transport) {
 				that.updateTransport("/transports/" + transport.index);
 			});
+		},
+
+		onItemPress: function (oEvent) {
+			var oPath = oEvent.getSource().getBindingContext().getPath();
+			var ID = oEvent.getSource().getBindingContext().getProperty("Id");
+
+			var item = oEvent.getParameter('listItem'); // get the selected item
+			var cxt = item.getBindingContext();
+			var obj = cxt.getObject();
+			var mes = JSON.stringify(obj);
+
 		}
 
 	});

@@ -13,7 +13,7 @@
 					<Text text="Material"/>
 				</header>
 				<footer/>
-			</Column>			
+			</Column>
 			<Column>
 				<header>
 					<Text text="Container Type"/>

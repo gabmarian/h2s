@@ -1,0 +1,11 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:gmaps="openui5.googlemaps">
+	<Panel id="idMapPanel" expandable="false" expanded="true">
+		<content>
+			<gmaps:Map id="idMap" height="500px" zoom="7" zoomControl="true" apiKey="AIzaSyD6EmAk92gaGzjYVYU-ebd_BK-rgejSoZ0">
+				<gmaps:directions>
+					<gmaps:Directions id="idDir" startAddress="Tiszaújváros" endAddress="{Destination}"/>
+				</gmaps:directions>
+			</gmaps:Map>
+		</content>
+	</Panel>
+</c:FragmentDefinition>

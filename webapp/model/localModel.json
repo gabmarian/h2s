@@ -23,9 +23,9 @@
 			"Material": "Monoacylglycerol",
 			"ThingId": "5F5C27233343437F9909CC3D9496164D"
 		}],
-		"DriverName" : "Kala Pál",
+		"DriverName": "Kala Pál",
 		"DriverPhone": "+36-30-765-7678",
-		"SalesRepName" : "Tóth Péter",
+		"SalesRepName": "Tóth Péter",
 		"SalesRepPhone": "+36-30-555-6666"
 	}, {
 		"index": 1,
@@ -46,9 +46,9 @@
 			"Material": "Diacylgliceron",
 			"ThingId": "E776BD2E089445E1835BF275BEC274BE"
 		}],
-		"DriverName" : "Kis Pista",
+		"DriverName": "Kis Pista",
 		"DriverPhone": "+36-70-765-7678",
-		"SalesRepName" : "Tóth Péter",
+		"SalesRepName": "Tóth Péter",
 		"SalesRepPhone": "+36-30-555-6666"
 	}]
 }
