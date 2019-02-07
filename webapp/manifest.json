@@ -13,6 +13,10 @@
 			"localModel": {
 				"uri": "model/localModel.json",
 				"type": "JSON"
+			},
+			"mainService": {
+				"uri": "/IOTAS/Things?$filter=_thingType eq 'iot.180731090059.hack2sol:SensorTags'",
+				"type": "JSON"
 			}
 		},
 		"sourceTemplate": {
@@ -70,6 +74,10 @@
 			"": {
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "localModel"
+			},
+			"thingModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "mainService"
 			}
 		},
 		"resources": {
@@ -88,24 +96,24 @@
 				"clearTarget": false
 			},
 			"routes": [{
-				"name": "transport",
-				"pattern": "transport/{index}",
-				"target": ["transportList", "transport"]
-			}, {
-				"name": "default",
-				"pattern": "",
-				"target": ["transportList", "transport"]
-			}			
-		
+					"name": "transport",
+					"pattern": "transport/{index}",
+					"target": ["transportList", "transport"]
+				}, {
+					"name": "default",
+					"pattern": "",
+					"target": ["transportList", "transport"]
+				}
+
 			],
 			"targets": {
-			    "transportList": {
-			    	"controlAggregation": "masterPages",
+				"transportList": {
+					"controlAggregation": "masterPages",
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewName": "TransportList"			    	
-			    },
+					"viewName": "TransportList"
+				},
 				"transport": {
 					"controlAggregation": "detailPages",
 					"viewType": "XML",

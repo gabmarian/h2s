@@ -18,7 +18,7 @@ sap.ui.define([
 
 		onSelectionChange: function (args) {
 			var path = args.getParameters().listItem.getBindingContext().getPath();
-			var index = this.getView().getModel().getProperty(path).index;
+			var index = this.getModel().getProperty(path).index;
 			this.getRouter().navTo("transport", {
 				index: index
 			});

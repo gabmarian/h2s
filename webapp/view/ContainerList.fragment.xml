@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Table items="{containers}" id="containerTab">
+	<Table items="{containers}" id="containerTab" headerText="Containers">
 		<headerToolbar/>
 		<columns>
 			<Column>
@@ -26,6 +26,12 @@
 				</header>
 				<footer/>
 			</Column>
+			<Column>
+				<header>
+					<Text text=""/>
+				</header>
+				<footer/>
+			</Column>			
 		</columns>
 		<items>
 			<ColumnListItem>
@@ -33,7 +39,8 @@
 					<ObjectIdentifier title="{Id}"/>
 					<Text text="{Material}"/>
 					<Text text="{Type}"/>
-					<Text text="{Temperature}"/>
+					<Text text="{path:'Temperature', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 2}} C°"/>
+					<core:Icon src="{TempIcon}" visible="{TempChanged}"/>
 				</cells>
 			</ColumnListItem>
 		</items>

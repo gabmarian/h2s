@@ -10,15 +10,18 @@
 		"containers": [{
 			"Id": "A-0001",
 			"Type": "IBC-1",
-			"Material": "Diacylgliceron"
+			"Material": "Diacylgliceron",
+			"ThingId": "04F3086CC9F140DB8F0D7516125E7D63"
 		}, {
 			"Id": "A-0002",
 			"Type": "IBC-1",
-			"Material": "Monoacylglycerol"
+			"Material": "Monoacylglycerol",
+			"ThingId": "4384AC01654E4D8B9BE4A2360610374C"
 		}, {
 			"Id": "A-0003",
 			"Type": "IBC-2",
-			"Material": "Monoacylglycerol"
+			"Material": "Monoacylglycerol",
+			"ThingId": "5F5C27233343437F9909CC3D9496164D"
 		}],
 		"DriverName" : "Kala Pál",
 		"DriverPhone": "+36-30-765-7678",
@@ -35,11 +38,13 @@
 		"containers": [{
 			"Id": "B-0001",
 			"Type": "IBC-1",
-			"Material": "Diacylgliceron"
+			"Material": "Diacylgliceron",
+			"ThingId": "D57799E2682347F89BEDC3EAF49EAA6A"
 		}, {
 			"Id": "B-0002",
 			"Type": "IBC-2",
-			"Material": "Diacylgliceron"
+			"Material": "Diacylgliceron",
+			"ThingId": "E776BD2E089445E1835BF275BEC274BE"
 		}],
 		"DriverName" : "Kis Pista",
 		"DriverPhone": "+36-70-765-7678",
