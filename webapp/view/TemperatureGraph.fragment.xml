@@ -1,0 +1,17 @@
+<c:FragmentDefinition xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:l="sap.ui.layout" xmlns:c="sap.ui.core" displayBlock="true" xmlns="sap.m">
+	<Panel id="idGraphPanel" expandable="false" expanded="true">
+		<content>
+			<l:FixFlex>
+				<l:flexContent>
+					<viz:Popover id="idPopOver"></viz:Popover>
+					<viz:VizFrame id="idVizFrame" height="100%" width="100%" vizType="timeseries_line" uiConfig="{applicationSet:'fiori'}">
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="timestamp"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</l:flexContent>
+			</l:FixFlex>
+		</content>
+	</Panel>
+</c:FragmentDefinition>

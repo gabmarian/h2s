@@ -35,7 +35,7 @@ sap.ui.define([
 		},
 
 		handleRouteMatched: function (oEvent) {
-			
+
 			var path = "/transports/" + oEvent.getParameter("arguments").index;
 
 			this.getView().bindElement(path);
@@ -45,35 +45,34 @@ sap.ui.define([
 		updateTransport: function (transportPath) {
 
 			var that = this;
-			
+
 			// Process each container related to a transport
 			this.getModel().getProperty(transportPath).containers.forEach(function (container, idx) {
-				
+
 				// Build model to request thing's data
 				var url = "/IOTAS/Things('" + container.ThingId + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time desc";
 
 				var jsonModel = new sap.ui.model.json.JSONModel(url);
 
 				jsonModel.attachRequestCompleted(function () {
-					
+
 					// Get actual and previous temperature
 					var temperature = jsonModel.getProperty("/value/0/temperature");
-					var tempPrev = that.getModel().getProperty( transportPath + "/containers/" + idx + "/Temperature" );
-					
+					var tempPrev = that.getModel().getProperty(transportPath + "/containers/" + idx + "/Temperature");
+
 					// Update temperature
 					that.getModel().setProperty(transportPath + "/containers/" + idx + "/Temperature", temperature);
-					
+
 					// If temperature changed mark the line with appropriate icon
 					var tempChanged = false;
-					
+
 					if (tempPrev && tempPrev !== temperature) {
 						that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempIcon",
 							tempPrev > temperature ? "sap-icon://arrow-bottom" : "sap-icon://arrow-top");
-						tempChanged = true;		
+						tempChanged = true;
 					}
 
 					that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempChanged", tempChanged);
-
 				});
 			});
 
@@ -89,11 +88,11 @@ sap.ui.define([
 		},
 
 		onItemPress: function (args) {
-			var path = args.getParameters().listItem.getBindingContext().getPath();
-			var thingId = this.getModel().getProperty(path).ThingId;
-			
+			var sPath = args.getParameters().listItem.getBindingContext().getPath();
+			var thingId = this.getModel().getProperty(sPath).ThingId;
+
 			this.getRouter().navTo("sensorData", {
-				sensor : thingId
+				sensor: thingId
 			});
 
 			// var item = oEvent.getParameter('listItem'); // get the selected item
