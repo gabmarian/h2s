@@ -3,7 +3,10 @@
 		<content>
 			<List mode="SingleSelectMaster" items="{/transports}" selectionChange="onSelectionChange">
 				<items>
-					<ObjectListItem intro="{DeliveryNumber}" title="{Destination}" number="{NumOfContainers}" numberUnit="containers">  
+					<ObjectListItem intro="{DeliveryNumber}" title="{Destination}" number="{NumOfContainers}" numberUnit="containers">
+					<firstStatus>
+						<ObjectStatus icon="{TempIcon}" state="{TempState}"/>
+					</firstStatus>						
 					</ObjectListItem>
 				</items>
 			</List>

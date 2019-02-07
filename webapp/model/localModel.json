@@ -50,5 +50,7 @@
 		"DriverPhone": "+36-70-765-7678",
 		"SalesRepName": "Tóth Péter",
 		"SalesRepPhone": "+36-30-555-6666"
-	}]
+	}],
+	
+	"tempTreshold" : 30
 }
