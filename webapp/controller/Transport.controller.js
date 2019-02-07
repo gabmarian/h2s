@@ -61,10 +61,15 @@ sap.ui.define([
 
 					// Get actual and previous temperature
 					var temperature = jsonModel.getProperty("/value/0/temperature");
+					var lastUpdate  = jsonModel.getProperty("/value/0/_time");
 					var tempPrev = that.getModel().getProperty(transportPath + "/containers/" + idx + "/Temperature");
 
-					// Update temperature
+					// Update temperature and last update
 					that.getModel().setProperty(transportPath + "/containers/" + idx + "/Temperature", temperature);
+					
+					if (lastUpdate) {
+						that.getModel().setProperty(transportPath + "/containers/" + idx + "/LastUpdate", new Date(lastUpdate) );
+					}
 
 					// If temperature changed mark the line with appropriate icon
 					var tempChanged = false;

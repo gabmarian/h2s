@@ -28,7 +28,7 @@
 			</Column>
 			<Column>
 				<header>
-					<Text text=""/>
+					<Text text="Last Updated"/>
 				</header>
 				<footer/>
 			</Column>
@@ -40,6 +40,7 @@
 					<Text text="{Material}"/>
 					<Text text="{Type}"/>
 					<ObjectStatus text="{path:'Temperature', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 2}} C°" icon="{TempIcon}" state="{TempState}"/>
+					<Text text="{path: 'LastUpdate',  type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd HH:mm:ss' } }"/>
 				</cells>
 			</ColumnListItem>
 		</items>
