@@ -49,6 +49,9 @@ sap.ui.define([
 			// Process each container related to a transport
 			this.getModel().getProperty(transportPath).containers.forEach(function (container, idx) {
 
+				// Get temperature limit
+				var tempTreshold = that.getModel().getProperty("/tempTreshold");
+
 				// Build model to request thing's data
 				var url = "/IOTAS/Things('" + container.ThingId + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time desc";
 
@@ -70,16 +73,34 @@ sap.ui.define([
 						that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempIcon",
 							tempPrev > temperature ? "sap-icon://arrow-bottom" : "sap-icon://arrow-top");
 						tempChanged = true;
+
+						// Set state
+						var tempState = "None";
+
+						if (temperature > tempTreshold) {
+							tempState = "Error";
+						}
+
+						that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempChanged", tempChanged);
+
+						that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempState", tempState);
+
+						// If temperature changed mark the line with appropriate icon
+						var icon = "";
+
+						if (temperature > tempTreshold) {
+							icon = "sap-icon://alert";
+						} else if (tempPrev && tempPrev !== temperature) {
+							icon = tempPrev > temperature ? "sap-icon://arrow-bottom" : "sap-icon://arrow-top";
+						}
 					}
 
-					that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempChanged", tempChanged);
+					that.getView().getModel().setProperty(transportPath + "/containers/" + idx + "/TempIcon", icon);
 				});
 			});
-
 		},
 
 		updateTransports: function () {
-
 			var that = this;
 
 			this.getModel().getProperty("/transports").forEach(function (transport) {
@@ -94,13 +115,6 @@ sap.ui.define([
 			this.getRouter().navTo("sensorData", {
 				sensor: thingId
 			});
-
-			// var item = oEvent.getParameter('listItem'); // get the selected item
-			// var cxt = item.getBindingContext();
-			// var obj = cxt.getObject();
-			// var mes = JSON.stringify(obj);
-
 		}
-
 	});
 });

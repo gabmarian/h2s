@@ -1,0 +1,85 @@
+<mvc:View controllerName="app.ui5iotapp.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
+	<SplitApp id="idAppControl" initialDetail="initDetail">
+		<detailPages>
+			<Page id="initDetail">
+				<VBox fitContainer="true" justifyContent="Center" alignItems="Center">
+					<Text text="Kérem válasszon ki egy elemet!"></Text>
+				</VBox>
+			</Page>
+			<Page id="thingDetail" title="Részletek" class="sapUiStdPage">
+				<content>
+					<IconTabBar id="idIconTabBarStretchContent" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false"
+						class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter text="Események">
+								<Table id="eventTable" items="{ path: 'eventModel>/value', sorter: { path: '_businessTimeStamp', descending:true } }">
+									<columns>
+										<Column width="auto">
+											<Text text="Dátum"/>
+										</Column>
+										<Column width="auto">
+											<Text text="Leírás"/>
+										</Column>
+										<Column width="auto">
+											<Text text="Súlyosság"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{path:'eventModel>_businessTimeStamp'}"/>
+												<Text text="{eventModel>_description}"/>
+												<Text text="{eventModel>_severity}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter text="Monitorozás">
+								<l:FixFlex>
+									<l:fixContent>
+										<HBox>
+											<items>
+												<VBox>
+													<items>
+														<Label text="Attribútum"></Label>
+														<Select id="propertySelect" forceSelection="false" items="{ path: 'thingTypeModel>/value/0/propertyTypes', sorter: { path: 'id' } }" change="onPropSelectionChange">
+															<core:Item key="{thingTypeModel>propertySetType}" text="{thingTypeModel>id}"/>
+														</Select>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+									</l:fixContent>
+									<l:flexContent>
+										<viz:Popover id="idPopOver"></viz:Popover>
+										<viz:VizFrame id="idVizFrame" height="100%" width="100%" vizType="timeseries_line" uiConfig="{applicationSet:'fiori'}">
+											<viz:feeds>
+												<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="timestamp"/>
+											</viz:feeds>
+										</viz:VizFrame>
+									</l:flexContent>
+								</l:FixFlex>
+							</IconTabFilter>
+							<IconTabFilter text="Pozíció">
+							</IconTabFilter>
+							<IconTabFilter text="Időjárás">
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="detail" title="Szenzorok" class="sapUiStdPage">
+				<content>
+					<List mode="SingleSelectMaster" items="{ path:'things>/value'}" selectionChange="onSelectionChange">
+						<StandardListItem title="{things>_name}"/>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

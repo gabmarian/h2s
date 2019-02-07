@@ -3,10 +3,10 @@
 		<content>
 			<IconTabBar expandable="false">
 				<items>
-					<IconTabFilter icon="sap-icon://detail-view">
+					<IconTabFilter icon="sap-icon://detail-view" text="Overview">
 						<core:Fragment fragmentName="h2s.PolyTransManager.view.TransportDetails" type="XML"/>
 					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://product">
+					<IconTabFilter icon="sap-icon://product" text="Containers">
 						<content>
 							<core:Fragment fragmentName="h2s.PolyTransManager.view.ContainerList" type="XML"/>
 						</content>
