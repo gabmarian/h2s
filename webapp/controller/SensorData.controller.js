@@ -14,15 +14,16 @@ sap.ui.define([
 			var that = this;
 			var sensor = oEvent.getParameter("arguments").sensor;
 
-			var url = "/IOTAS/Things('" + sensor + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time asc";
-			var jsonModel = new sap.ui.model.json.JSONModel(url);
+				var url = "/IOTAS/Things('" + sensor + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time asc";
+				var jsonModel = new sap.ui.model.json.JSONModel(url);
 
-			jsonModel.attachRequestCompleted(function () {
-				// Get actual and previous temperature
-				var aTemperatures = jsonModel.getProperty("/value");
+				jsonModel.attachRequestCompleted(function () {
 
-				that.initChart(jsonModel);
-			});
+					var aTemperatures = jsonModel.getProperty("/value");
+
+					that.initChart(jsonModel);
+				});
+			
 		},
 
 		initChart: function (oModel) {
@@ -89,7 +90,7 @@ sap.ui.define([
 			});
 
 			oVizFrame.setDataset(oDataset);
-			oVizFrame.setVisible(false);
+			oVizFrame.setVisible(true);
 		},
 	});
 });
