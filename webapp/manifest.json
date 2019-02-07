@@ -102,6 +102,10 @@
 					"name": "default",
 					"pattern": "",
 					"target": ["transportList", "transport"]
+				}, {
+					"name": "sensorData",
+					"pattern" : "sendorData/{sensor}",
+					"target": ["transportList", "sensorData"]
 				}
 
 			],
@@ -119,7 +123,14 @@
 					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewName": "Transport"
-				}
+				},
+				"sensorData": {
+					"controlAggregation": "detailPages",
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "SensorData"
+				}			
 			}
 		}
 	}

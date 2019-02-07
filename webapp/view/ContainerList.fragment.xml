@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Table items="{containers}" id="containerTab" headerText="Containers">
+	<Table items="{containers}" id="containerTab" headerText="Containers" itemPress="onItemPress" >
 		<headerToolbar/>
 		<columns>
 			<Column>
@@ -34,7 +34,7 @@
 			</Column>			
 		</columns>
 		<items>
-			<ColumnListItem>
+			<ColumnListItem type="Active">
 				<cells>
 					<ObjectIdentifier title="{Id}"/>
 					<Text text="{Material}"/>

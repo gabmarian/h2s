@@ -88,14 +88,18 @@ sap.ui.define([
 			});
 		},
 
-		onItemPress: function (oEvent) {
-			var oPath = oEvent.getSource().getBindingContext().getPath();
-			var ID = oEvent.getSource().getBindingContext().getProperty("Id");
+		onItemPress: function (args) {
+			var path = args.getParameters().listItem.getBindingContext().getPath();
+			var thingId = this.getModel().getProperty(path).ThingId;
+			
+			this.getRouter().navTo("sensorData", {
+				sensor : thingId
+			});
 
-			var item = oEvent.getParameter('listItem'); // get the selected item
-			var cxt = item.getBindingContext();
-			var obj = cxt.getObject();
-			var mes = JSON.stringify(obj);
+			// var item = oEvent.getParameter('listItem'); // get the selected item
+			// var cxt = item.getBindingContext();
+			// var obj = cxt.getObject();
+			// var mes = JSON.stringify(obj);
 
 		}
 
