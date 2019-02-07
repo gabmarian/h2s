@@ -7,9 +7,19 @@ sap.ui.define([
 		onInit: function () {
 			this.getRouter().getRoute("transport").attachMatched(this.handleRouteMatched, this);
 		},
-		
-		handleRouteMatched: function(oEvent) {
+
+		handleRouteMatched: function (oEvent) {
 			this.getView().bindElement("/transports/" + oEvent.getParameter("arguments").index);
+		},
+
+		onItemPress: function (oEvent) {
+			var oPath = oEvent.getSource().getBindingContext().getPath();
+			var ID = oEvent.getSource().getBindingContext().getProperty("Id");
+
+			var item = oEvent.getParameter('listItem'); // get the selected item
+			var cxt = item.getBindingContext();
+			var obj = cxt.getObject();
+			var mes = JSON.stringify(obj);
 		}
 	});
 });

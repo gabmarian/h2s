@@ -5,14 +5,16 @@
 				<items>
 					<IconTabFilter icon="sap-icon://detail-view">
 						<core:Fragment fragmentName="h2s.PolyTransManager.view.TransportDetails" type="XML"/>
-					</IconTabFilter>					
-					<IconTabFilter icon="sap-icon://product">
-						<core:Fragment fragmentName="h2s.PolyTransManager.view.ContainerList" type="XML"/>
 					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://map-2" text="Route" count="" design="Vertical" showAll="false" textDirection="Inherit"
-						enabled="true" visible="true" iconDensityAware="false">
+					<IconTabFilter icon="sap-icon://product">
 						<content>
-							<core:Fragment type="XML" fragmentName="h2s.PolyTransManager.view.GoogleMaps"/> 
+							<core:Fragment fragmentName="h2s.PolyTransManager.view.ContainerList" type="XML"/>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://map-2" text="Route" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true"
+						visible="true" iconDensityAware="false">
+						<content>
+							<core:Fragment type="XML" fragmentName="h2s.PolyTransManager.view.GoogleMaps"/>
 						</content>
 					</IconTabFilter>
 				</items>
