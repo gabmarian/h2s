@@ -1,32 +1,54 @@
 sap.ui.define([
 	"./BaseController",
 	"jquery.sap.global",
-	"sap/viz/ui5/format/ChartFormatter"
-], function (BaseController, jQuery, ChartFormatter) {
+	"sap/viz/ui5/format/ChartFormatter",
+	"sap/ui/model/json/JSONModel"
+], function (BaseController, jQuery, ChartFormatter, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("h2s.PolyTransManager.controller.SensorData", {
+		_chartModel: new JSONModel(),
+		_timeSeriesModel: new JSONModel(),
 		onInit: function () {
 			this.getRouter().getRoute("sensorData").attachMatched(this.handleRouteMatched, this);
+			var oPopOver = this.getView().byId("idPopOver");
+			var oVizFrame = this.getView().byId('idVizFrame');
+            oPopOver.connect(oVizFrame.getVizUid());
 		},
 
 		handleRouteMatched: function (oEvent) {
 			var that = this;
 			var sensor = oEvent.getParameter("arguments").sensor;
 
-				var url = "/IOTAS/Things('" + sensor + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time asc";
-				var jsonModel = new sap.ui.model.json.JSONModel(url);
+			var url = "/IOTAS/Things('" + sensor + "')/iot.180731090059.hack2sol:SensorTags/Temperature?$orderby=_time asc";
+			var jsonModel = new JSONModel(url);
 
-				jsonModel.attachRequestCompleted(function () {
+			jsonModel.attachRequestCompleted(function () {
 
-					var aTemperatures = jsonModel.getProperty("/value");
+				//that.clearData(jsonModel["value"]);
 
-					that.initChart(jsonModel);
-				});
-			
+				var aTemperatures = jsonModel.getProperty("/value");
+				
+
+				that.initChart(jsonModel);
+			});
+		},
+
+		clearData: function (array) {
+			var newArray = [];
+			if (array[0]) {
+				newArray.push(array[0]);
+			}
+			for (var i = 0; i < array.length - 1; i++) {
+				if (array[i]["Temp"] !== array[i + 1]["Temp"]) {
+					newArray.push(array[i + 1]);
+				}
+			}
+			console.log(newArray);
 		},
 
 		initChart: function (oModel) {
+			console.log(oModel);
 			var oVizFrame = this.getView().byId("idVizFrame");
 
 			oVizFrame.setVizProperties({
@@ -72,23 +94,35 @@ sap.ui.define([
 					}
 				}
 			});
-
+			
 			oVizFrame.setModel(oModel);
 
 			var oDataset = new sap.viz.ui5.data.FlattenedDataset({
 				dimensions: [{
-					name: "timestamp",
+					name: "Időpont",
 					value: {
 						path: "_time"
 					},
 					dataType: "date"
 				}]
 			});
+			
+			
+			oDataset.addMeasure(new sap.viz.ui5.data.MeasureDefinition({
+						name: "Hőmérséklet",
+						value: "{temperature}"
+			}));
+			
+			oVizFrame.removeFeed(1);
+				oVizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem({
+					"uid": "primaryValues",
+					"type": "Measure",
+					"values": ["Hőmérséklet"]
+				}));
 
 			oDataset.bindAggregation("data", {
 				path: "/value"
 			});
-
 			oVizFrame.setDataset(oDataset);
 			oVizFrame.setVisible(true);
 		},

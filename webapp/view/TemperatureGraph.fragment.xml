@@ -2,12 +2,17 @@
 	xmlns:l="sap.ui.layout" xmlns:c="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<Panel id="idGraphPanel" expandable="false" expanded="true">
 		<content>
-			<viz:Popover id="idPopOver"></viz:Popover>
-			<viz:VizFrame id="idVizFrame" height="100%" width="100%" vizType="timeseries_line" uiConfig="{applicationSet:'fiori'}">
-				<viz:feeds>
-					<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="timestamp"/>
-				</viz:feeds>
-			</viz:VizFrame>
+			<VBox fitContainer="true">
+				<items>
+					<viz:Popover id="idPopOver"></viz:Popover>
+					<viz:VizFrame id="idVizFrame" height="500px" width="100%" vizType="timeseries_line" uiConfig="{applicationSet:'fiori'}">
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="Időpont"/>
+							<!--<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="temperature"/>-->
+						</viz:feeds>
+					</viz:VizFrame>
+				</items>
+			</VBox>
 		</content>
 	</Panel>
 </c:FragmentDefinition>
