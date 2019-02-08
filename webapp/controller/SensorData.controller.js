@@ -13,7 +13,7 @@ sap.ui.define([
 			this.getRouter().getRoute("sensorData").attachMatched(this.handleRouteMatched, this);
 			var oPopOver = this.getView().byId("idPopOver");
 			var oVizFrame = this.getView().byId("idVizFrame");
-            oPopOver.connect(oVizFrame.getVizUid());
+			oPopOver.connect(oVizFrame.getVizUid());
 		},
 
 		handleRouteMatched: function (oEvent) {
@@ -56,6 +56,25 @@ sap.ui.define([
 					dataLabel: {
 						formatString: "__UI5__ShortIntegerMaxFraction2",
 						visible: false
+					},
+					referenceLine: {
+						line: {
+							primaryValues: [{
+								value: -10,
+								color: "#FF0000",
+								type: "line",
+								label: {
+									text: "Critical C°"
+								}
+							}, {
+								value: 30,
+								color: "#FF0000",
+								type: "line",
+								label: {
+									text: "Critical C°"
+								}
+							}]
+						}
 					}
 				},
 				legend: {
@@ -90,7 +109,7 @@ sap.ui.define([
 					}
 				}
 			});
-			
+
 			oVizFrame.setModel(oModel);
 
 			var oDataset = new sap.viz.ui5.data.FlattenedDataset({
@@ -102,19 +121,18 @@ sap.ui.define([
 					dataType: "date"
 				}]
 			});
-			
-			
+
 			oDataset.addMeasure(new sap.viz.ui5.data.MeasureDefinition({
-						name: "Temperature",
-						value: "{temperature}"
+				name: "Temperature",
+				value: "{temperature}"
 			}));
-			
+
 			oVizFrame.removeFeed(1);
-				oVizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem({
-					"uid": "primaryValues",
-					"type": "Measure",
-					"values": ["Temperature"]
-				}));
+			oVizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem({
+				"uid": "primaryValues",
+				"type": "Measure",
+				"values": ["Temperature"]
+			}));
 
 			oDataset.bindAggregation("data", {
 				path: "/value"
