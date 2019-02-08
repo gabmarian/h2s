@@ -24,7 +24,6 @@
 			"version": "1.40.12"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -45,7 +44,6 @@
 			"sap_belize"
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "h2s.PolyTransManager.view.App",
@@ -80,9 +78,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -94,20 +94,31 @@
 				"controlAggregation": "detailPages",
 				"clearTarget": false
 			},
-			"routes": [{
+			"routes": [
+				{
 					"name": "transport",
 					"pattern": "transport/{index}",
-					"target": ["transportList", "transport"]
-				}, {
+					"target": [
+						"transportList",
+						"transport"
+					]
+				},
+				{
 					"name": "default",
 					"pattern": "",
-					"target": ["transportList", "transport"]
-				}, {
+					"target": [
+						"transportList",
+						"transport"
+					]
+				},
+				{
 					"name": "sensorData",
-					"pattern" : "sendorData/{sensor}",
-					"target": ["transportList", "sensorData"]
+					"pattern": "sendorData/{sensor}",
+					"target": [
+						"transportList",
+						"sensorData"
+					]
 				}
-
 			],
 			"targets": {
 				"transportList": {
@@ -130,8 +141,12 @@
 					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewName": "SensorData"
-				}			
+				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
