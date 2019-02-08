@@ -12,7 +12,7 @@ sap.ui.define([
 		onInit: function () {
 			this.getRouter().getRoute("sensorData").attachMatched(this.handleRouteMatched, this);
 			var oPopOver = this.getView().byId("idPopOver");
-			var oVizFrame = this.getView().byId('idVizFrame');
+			var oVizFrame = this.getView().byId("idVizFrame");
             oPopOver.connect(oVizFrame.getVizUid());
 		},
 
@@ -24,12 +24,8 @@ sap.ui.define([
 			var jsonModel = new JSONModel(url);
 
 			jsonModel.attachRequestCompleted(function () {
-
-				//that.clearData(jsonModel["value"]);
-
-				var aTemperatures = jsonModel.getProperty("/value");
-				
-
+				var cleared = that.clearData(jsonModel.getProperty("/value"));
+				jsonModel.setProperty("/value", cleared);
 				that.initChart(jsonModel);
 			});
 		},
@@ -40,15 +36,15 @@ sap.ui.define([
 				newArray.push(array[0]);
 			}
 			for (var i = 0; i < array.length - 1; i++) {
-				if (array[i]["Temp"] !== array[i + 1]["Temp"]) {
+				if ((array[i].temperature).toFixed(2) !== (array[i + 1].temperature).toFixed(2)) {
 					newArray.push(array[i + 1]);
 				}
 			}
-			console.log(newArray);
+			return newArray;
+			//console.log(newArray);
 		},
 
 		initChart: function (oModel) {
-			console.log(oModel);
 			var oVizFrame = this.getView().byId("idVizFrame");
 
 			oVizFrame.setVizProperties({
@@ -99,7 +95,7 @@ sap.ui.define([
 
 			var oDataset = new sap.viz.ui5.data.FlattenedDataset({
 				dimensions: [{
-					name: "Időpont",
+					name: "Time",
 					value: {
 						path: "_time"
 					},
@@ -109,7 +105,7 @@ sap.ui.define([
 			
 			
 			oDataset.addMeasure(new sap.viz.ui5.data.MeasureDefinition({
-						name: "Hőmérséklet",
+						name: "Temperature",
 						value: "{temperature}"
 			}));
 			
@@ -117,7 +113,7 @@ sap.ui.define([
 				oVizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem({
 					"uid": "primaryValues",
 					"type": "Measure",
-					"values": ["Hőmérséklet"]
+					"values": ["Temperature"]
 				}));
 
 			oDataset.bindAggregation("data", {

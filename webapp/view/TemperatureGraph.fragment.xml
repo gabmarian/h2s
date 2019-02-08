@@ -7,8 +7,7 @@
 					<viz:Popover id="idPopOver"></viz:Popover>
 					<viz:VizFrame id="idVizFrame" height="500px" width="100%" vizType="timeseries_line" uiConfig="{applicationSet:'fiori'}">
 						<viz:feeds>
-							<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="Időpont"/>
-							<!--<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="temperature"/>-->
+							<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="Time"/>
 						</viz:feeds>
 					</viz:VizFrame>
 				</items>
